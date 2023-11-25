@@ -1,0 +1,21 @@
+<svg width="24" height="24" xmlns="http://www.w3.org/2000/svg">
+ <!-- Created with Method Draw - http://github.com/duopixel/Method-Draw/ -->
+
+ <g>
+  <title>background</title>
+  <rect x="-1" y="-1" width="26" height="26" id="canvas_background" fill="none"/>
+  <g id="canvasGrid" display="none">
+   <rect id="svg_1" width="100%" height="100%" x="0" y="0" stroke-width="0" fill="url(#gridpattern)"/>
+  </g>
+ </g>
+ <g>
+  <title>Layer 1</title>
+  <rect fill="none" stroke="#999999" stroke-width="1.5" x="4.634256" y="0.981052" width="17.251169" height="22.037895" id="svg_2" rx="1"/>
+  <rect fill="none" stroke="#999999" stroke-width="1.5" x="8.330936" y="1.052143" width="9.857811" height="8.246438" id="svg_3"/>
+  <rect fill="none" stroke="#999999" stroke-width="1.5" x="7.880699" y="12.236966" width="10.758284" height="10.710891" id="svg_4"/>
+  <line fill="none" stroke-width="1.5" x1="7.975486" y1="15.986223" x2="18.59159" y2="15.986223" id="svg_5" stroke-linejoin="null" stroke-linecap="null" stroke="#999999"/>
+  <line fill="none" stroke-width="1.5" x1="7.975486" y1="19.825082" x2="18.59159" y2="19.825082" id="svg_6" stroke-linejoin="null" stroke-linecap="null" stroke="#999999"/>
+  <path fill="none" stroke="#999999" stroke-width="1.5" fill-opacity="null" opacity="0.5" d="m4.155181,0.41304" id="svg_7"/>
+  <text stroke="#999999" transform="matrix(0.2598841603175434,0,0,0.2598841603175434,-1.0952732681493522,11.974992334582268) " xml:space="preserve" text-anchor="start" font-family="Helvetica, Arial, sans-serif" font-size="24" id="svg_9" y="-23.491911" x="5.643029" stroke-width="1.5" fill="none">*</text>
+ </g>
+</svg>
