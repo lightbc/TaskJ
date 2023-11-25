@@ -26,7 +26,8 @@ def validParams(params: NewCreate):
     if params.opType == "循环" and not params.cycleVal:  # 执行类型为【循环】时，执行周期校验
         return StatusCodeEnum.CYCLE_VALUE_EMPTY.code
     try:
-        int(params.cycleVal)  # 执行周期数据类型校验
+        if params.cycleVal:
+            int(params.cycleVal)  # 执行周期数据类型校验
     except Exception:
         return StatusCodeEnum.DATA_TYPE_ERROR.code
     return StatusCodeEnum.OK.code
