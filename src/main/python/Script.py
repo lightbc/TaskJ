@@ -25,16 +25,17 @@ class Ui_Form(object):
         self.verticalLayout.addLayout(self.script_toolbar)
 
         # 工具栏
+        res_path = "../resources/images/"
         self.toolBar = QtWidgets.QToolBar()
         self.toolBar.setObjectName("toolBar")
         self.save_action = QtWidgets.QAction()
         icon = QtGui.QIcon()
-        icon.addPixmap(QtGui.QPixmap("../resources/images/save.svg"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        icon.addPixmap(QtGui.QPixmap(res_path + "save.svg"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         self.save_action.setIcon(icon)
         self.save_action.setObjectName("save_action")
         self.run_action = QtWidgets.QAction()
         icon1 = QtGui.QIcon()
-        icon1.addPixmap(QtGui.QPixmap("../resources/images/run_script.svg"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        icon1.addPixmap(QtGui.QPixmap(res_path + "run_script.svg"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         self.run_action.setIcon(icon1)
         self.run_action.setObjectName("run_action")
         self.toolBar.addAction(self.save_action)
