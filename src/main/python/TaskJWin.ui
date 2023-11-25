@@ -18,7 +18,7 @@
   </property>
   <property name="windowIcon">
    <iconset>
-    <normaloff>resources/images/logo.svg</normaloff>resources/images/logo.svg</iconset>
+    <normaloff>../resources/images/logo.svg</normaloff>../resources/images/logo.svg</iconset>
   </property>
   <widget class="QWidget" name="centralwidget">
    <layout class="QHBoxLayout" name="horizontalLayout_2">
@@ -286,7 +286,7 @@
   <action name="all_stop_action">
    <property name="icon">
     <iconset>
-     <normaloff>resources/images/stop.svg</normaloff>resources/images/stop.svg</iconset>
+     <normaloff>../resources/images/stop.svg</normaloff>../resources/images/stop.svg</iconset>
    </property>
    <property name="text">
     <string>全部停止</string>

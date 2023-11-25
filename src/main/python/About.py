@@ -25,7 +25,7 @@ class Ui_widget(object):
         self.verticalLayout.setObjectName("verticalLayout")
         self.label = QtWidgets.QLabel(widget)
         self.label.setText("")
-        self.label.setPixmap(QtGui.QPixmap("resources/images/logo_max.svg"))
+        self.label.setPixmap(QtGui.QPixmap("../resources/images/logo_max.svg"))
         self.label.setAlignment(QtCore.Qt.AlignCenter)
         self.label.setObjectName("label")
         self.verticalLayout.addWidget(self.label)
