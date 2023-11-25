@@ -12,7 +12,6 @@ class TaskJ(QtWidgets.QMainWindow, TaskJWin.Ui_MainWindow):
     def __init__(self):
         super().__init__()
         self.setupUi(self)
-        self.loadQuartz = False
         self.qz = None
         self.menuActionListener()
         self.splitter.setSizes([200, 600])
@@ -58,12 +57,11 @@ class TaskJ(QtWidgets.QMainWindow, TaskJWin.Ui_MainWindow):
         :param nid:识别主键
         :return:
         """
-        if not self.loadQuartz:
-            # 创建调度任务执行对象
-            self.qz = QuartzUtil.QuartzUtil(self)
-            self.loadQuartz = True
+        # 先删除，再创建调度任务执行对象
         if self.qz:
-            self.qz.createJob(nid)
+            del self.qz
+        self.qz = QuartzUtil.QuartzUtil(self)
+        self.qz.createJob(nid)
 
     def taskRunStop(self, nid):
         """

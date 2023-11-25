@@ -10,8 +10,11 @@ class QuartzUtil:
 
     def __init__(self, app: TaskJ):
         self.logger = LoggerUtil.getLogger(showLog=app.showLog)
-        self.scheduler = BackgroundScheduler()
-        self.scheduler.start()
+        try:
+            self.scheduler = BackgroundScheduler(timezone='Asia/Shanghai')
+            self.scheduler.start()
+        except Exception as e:
+            self.logger.error(e)
 
     def createJob(self, nid):
         """
