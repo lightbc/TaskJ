@@ -14,8 +14,12 @@ class ClearLogDialog(QDialog, ClearLog.Ui_Form, TaskJWin.Ui_MainWindow):
     日志清除UI界面
     """
 
-    def __init__(self, parent=None):
+    def __init__(self, logger, showLog, parent=None):
         super(ClearLogDialog, self).__init__(parent)
+        self.logger = logger
+        self.sh = showLog
+        # 移除日志记录器的处理器，否则清理日志文件时会报错：文件被占用
+        LoggerUtil.removeHandlers(logger)
         self.setupUi(self)
         # 打开对话框
         self.open()
@@ -25,11 +29,15 @@ class ClearLogDialog(QDialog, ClearLog.Ui_Form, TaskJWin.Ui_MainWindow):
         """清除操作"""
         b = self.clearRange()
         if b:
+            # 日志内容清除后，日志显示UI中的日志文本内容也需要同步清理
+            self.sh.setPlainText("")
             QMessageBox.information(self, "提示", "清除成功！")
             self.close()
         else:
             QMessageBox.warning(self, "警告", "清除失败！")
             self.close()
+        # 日志文件处理完毕后，再将处理器添加回去
+        LoggerUtil.addHandlers(self.logger, self.sh)
 
     def clearRange(self):
         """

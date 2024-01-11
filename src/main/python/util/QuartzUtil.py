@@ -2,14 +2,13 @@ import os
 from apscheduler.schedulers.background import BackgroundScheduler
 from util import FileUtil, LoggerUtil, OSUtil
 from entity import NewCreate
-from TaskJ import TaskJ
 
 
 class QuartzUtil:
     """调度任务工具类"""
 
-    def __init__(self, app: TaskJ):
-        self.logger = LoggerUtil.getLogger(showLog=app.showLog)
+    def __init__(self, logger):
+        self.logger = logger
         try:
             self.scheduler = BackgroundScheduler(timezone='Asia/Shanghai')
             self.scheduler.start()

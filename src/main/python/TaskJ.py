@@ -2,8 +2,11 @@ import sys
 import About
 import TaskJWin
 from dialog import NewCreateDialog, ClearLogDialog, EditScriptDialog
-from util import TaskListUtil, QuartzUtil
+from util import TaskListUtil, QuartzUtil, LoggerUtil
 from PyQt5 import QtWidgets, QtGui
+
+# 唯一日志记录对象，避免消息重复输出
+logger = LoggerUtil.getLogger()
 
 
 class TaskJ(QtWidgets.QMainWindow, TaskJWin.Ui_MainWindow):
@@ -20,6 +23,11 @@ class TaskJ(QtWidgets.QMainWindow, TaskJWin.Ui_MainWindow):
         TaskListUtil.loadTaskList(self.taskList)
         # 任务列表右键监听
         self.taskList.customContextMenuRequested.connect(self.loadTaskListMenu)
+
+        # 日志UI输出
+        if logger:
+            logHandler = LoggerUtil.showLogHandler(self.showLog)
+            logger.addHandler(logHandler)
 
     def loadTaskListMenu(self, pos):
         """
@@ -60,7 +68,7 @@ class TaskJ(QtWidgets.QMainWindow, TaskJWin.Ui_MainWindow):
         # 先删除，再创建调度任务执行对象
         if self.qz:
             del self.qz
-        self.qz = QuartzUtil.QuartzUtil(self)
+        self.qz = QuartzUtil.QuartzUtil(logger)
         self.qz.createJob(nid)
 
     def taskRunStop(self, nid):
@@ -141,7 +149,7 @@ class TaskJ(QtWidgets.QMainWindow, TaskJWin.Ui_MainWindow):
 
     def clear(self):
         """日志起立动作事件"""
-        dialog = ClearLogDialog.ClearLogDialog(self)
+        dialog = ClearLogDialog.ClearLogDialog(logger, self.showLog)
         dialog.clearOk.clicked.connect(lambda: ClearLogDialog.ClearLogDialog.clearAction(dialog))
 
     def about(self):

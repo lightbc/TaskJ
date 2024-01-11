@@ -16,12 +16,11 @@ savePath = OSUtil.getAppDir() + os.sep + logDir
 fmt = "[%(asctime)s] [%(levelname)s] [%(filename)s:%(lineno)d] : %(message)s"
 
 
-def getLogger(fileName=None, level=None, showLog=None, *args):
+def getLogger(fileName=None, level=None, *args):
     """
     获取日志对象
     :param fileName:自定义日志文件名称
     :param level: 日志输出等级
-    :param showLog: 程序显示日志内容UI组件对象
     :param args: 日志处理handler
     :return: 日志处理对象
     """
@@ -39,15 +38,11 @@ def getLogger(fileName=None, level=None, showLog=None, *args):
             logger.addHandler(arg)
     else:  # 设置默认handler
         # 文件输出处理程序
-        file_handler = fileHandler(level)
+        file_handler = fileHandler()
         # 控制台输出处理程序
-        console_handler = consoleHandler(level)
+        console_handler = consoleHandler()
         logger.addHandler(file_handler)
         logger.addHandler(console_handler)
-        # 应用程序UI显示组件处理程序
-        if showLog:
-            show_log_handler = showLogHandler(showLog, level)
-            logger.addHandler(show_log_handler)
 
     # 设置日志输出级别
     if level:
@@ -57,64 +52,49 @@ def getLogger(fileName=None, level=None, showLog=None, *args):
     return logger
 
 
-def fileHandler(level=None, formatter=None):
-    """
-    文件处理程序
-    :param level: 日志级别
-    :param formatter: 输出格式
-    :return: handler
-    """
+def fileHandler():
+    """日志输出日志文件处理程序"""
     handler = logging.FileHandler(log_path, encoding="UTF-8")
-    if level:
-        handler.setLevel(level)
-    else:
-        handler.setLevel(logging.INFO)
-    if formatter:
-        handler.setFormatter(formatter)
-    else:
-        handler.setFormatter(logging.Formatter(fmt))
+    handler.setLevel(logging.INFO)
+    handler.setFormatter(logging.Formatter(fmt))
     return handler
 
 
-def consoleHandler(level=None, formatter=None):
-    """
-    控制台处理程序
-    :param level:日志级别
-    :param formatter: 输出格式
-    :return: handler
-    """
+def consoleHandler():
+    """日志输出控制台处理程序"""
     handler = logging.StreamHandler()
-    if level:
-        handler.setLevel(level)
-    else:
-        handler.setLevel(logging.INFO)
-    if formatter:
-        handler.setFormatter(logging.Formatter(formatter))
-    else:
-        handler.setFormatter(logging.Formatter(fmt))
+    handler.setLevel(logging.INFO)
+    handler.setFormatter(logging.Formatter(fmt))
     return handler
 
 
-def showLogHandler(showLog, level=None, formatter=None):
-    """
-    应用程序输出UI组件处理程序
-    :param showLog: 日志显示UI组件
-    :param level: 日志级别
-    :param formatter: 输出格式
-    :return: handler
-    """
+def showLogHandler(showLog):
+    """应用程序UI显示日志内容处理程序"""
     handler = AppShowLogHandler.AppShowLogHandler(showLog)
-    if level:
-        handler.setLevel(level)
-    else:
-        handler.setLevel(logging.INFO)
-    if formatter:
-        handler.setFormatter(logging.Formatter(formatter))
-    else:
-        handler.setFormatter(logging.Formatter(fmt))
+    handler.setLevel(logging.INFO)
+    handler.setFormatter(logging.Formatter(fmt))
     return handler
 
 
 def shutDown():
     """关闭日志记录器"""
     logging.shutdown()
+
+
+def removeHandlers(logger):
+    """移除日志处理程序"""
+    if logger:
+        for handler in logger.handlers:
+            logger.removeHandler(handler)
+
+
+def addHandlers(logger, showLog=None):
+    """添加日志处理程序"""
+    if logger:
+        fh = fileHandler()
+        ch = consoleHandler()
+        logger.addHandler(fh)
+        logger.addHandler(ch)
+        if showLog:
+            sh = showLogHandler(showLog)
+            logger.addHandler(sh)
