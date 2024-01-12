@@ -13,7 +13,7 @@ ext_log = ".log"
 # 日志文件保存目录路径
 savePath = OSUtil.getAppDir() + os.sep + logDir
 # 日志默认输出格式
-fmt = "[%(asctime)s] [%(levelname)s] [%(filename)s:%(lineno)d] : %(message)s"
+fmt = "[%(asctime)s] [%(levelname)-7s] [%(filename)s:%(lineno)d] : %(message)s"
 
 
 def getLogger(fileName=None, level=None, *args):
@@ -68,9 +68,9 @@ def consoleHandler():
     return handler
 
 
-def showLogHandler(showLog):
+def showLogHandler(showLog, showType=None):
     """应用程序UI显示日志内容处理程序"""
-    handler = AppShowLogHandler.AppShowLogHandler(showLog)
+    handler = AppShowLogHandler.AppShowLogHandler(showLog, showType)
     handler.setLevel(logging.INFO)
     handler.setFormatter(logging.Formatter(fmt))
     return handler
@@ -83,12 +83,28 @@ def shutDown():
 
 def removeHandlers(logger):
     """移除日志处理程序"""
-    if logger:
-        for handler in logger.handlers:
-            logger.removeHandler(handler)
+    b = False
+    try:
+        if logger:
+            for handler in logger.handlers:
+                logger.removeHandler(handler)
+            b = True
+    except Exception as e:
+        raise
+    finally:
+        return b
 
 
-def addHandlers(logger, showLog=None):
+def showAssignLevelLog(logger, showLog=None, showType=None):
+    """添加日志处理器前，先移除已存在的处理器，避免内容重复"""
+    if logger and showLog:
+        b = removeHandlers(logger)
+        if b:
+            showLog.setText("")
+            addHandlers(logger, showLog, showType)
+
+
+def addHandlers(logger, showLog=None, showType=None):
     """添加日志处理程序"""
     if logger:
         fh = fileHandler()
@@ -96,5 +112,5 @@ def addHandlers(logger, showLog=None):
         logger.addHandler(fh)
         logger.addHandler(ch)
         if showLog:
-            sh = showLogHandler(showLog)
+            sh = showLogHandler(showLog, showType)
             logger.addHandler(sh)

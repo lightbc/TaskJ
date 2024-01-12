@@ -80,6 +80,16 @@ class TaskJ(QtWidgets.QMainWindow, TaskJWin.Ui_MainWindow):
         if self.qz:
             self.qz.removeJob(nid)
 
+    def showAssignLogs(self):
+        """显示指定级别的日志内容"""
+        self.all_log.triggered.connect(lambda: LoggerUtil.showAssignLevelLog(logger, self.showLog))
+        self.info_log.triggered.connect(
+            lambda: LoggerUtil.showAssignLevelLog(logger, self.showLog, self.info_log.text()))
+        self.warn_log.triggered.connect(
+            lambda: LoggerUtil.showAssignLevelLog(logger, self.showLog, self.warn_log.text()))
+        self.error_log.triggered.connect(
+            lambda: LoggerUtil.showAssignLevelLog(logger, self.showLog, self.error_log.text()))
+
     def taskListUpdate(self, nid):
         """
         任务保存信息更新
@@ -110,6 +120,7 @@ class TaskJ(QtWidgets.QMainWindow, TaskJWin.Ui_MainWindow):
         self.exit()
         self.script()
         self.allStop()
+        self.showAssignLogs()
         self.clearLog()
         self.about()
 

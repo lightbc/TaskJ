@@ -236,7 +236,17 @@
     <property name="title">
      <string>运行</string>
     </property>
+    <widget class="QMenu" name="menut">
+     <property name="title">
+      <string>显示日志</string>
+     </property>
+     <addaction name="all_log"/>
+     <addaction name="info_log"/>
+     <addaction name="warn_log"/>
+     <addaction name="error_log"/>
+    </widget>
     <addaction name="all_stop_action"/>
+    <addaction name="menut"/>
    </widget>
    <addaction name="menu"/>
    <addaction name="menubianji"/>
@@ -296,6 +306,29 @@
    </property>
    <property name="shortcut">
     <string>Ctrl+Shift+S</string>
+   </property>
+  </action>
+  <action name="all_log">
+   <property name="text">
+    <string>ALL</string>
+   </property>
+  </action>
+  <action name="info_log">
+   <property name="text">
+    <string>INFO</string>
+   </property>
+  </action>
+  <action name="warn_log">
+   <property name="text">
+    <string>WARNING</string>
+   </property>
+   <property name="toolTip">
+    <string>WARNING</string>
+   </property>
+  </action>
+  <action name="error_log">
+   <property name="text">
+    <string>ERROR</string>
    </property>
   </action>
  </widget>
