@@ -1,7 +1,6 @@
 import os
 import time
-
-from util import FileUtil
+import util.FileUtil as FileUtil
 
 
 def getUserPath():

@@ -1,7 +1,11 @@
 import os
-from apscheduler.schedulers.background import BackgroundScheduler
-from util import FileUtil, LoggerUtil, OSUtil
-from entity import NewCreate
+import apscheduler.schedulers.background as bg
+import util.FileUtil as FileUtil
+import util.LoggerUtil as LoggerUtil
+import util.OSUtil as OSUtil
+import entity.NewCreate as NewCreate
+
+BackgroundScheduler = bg.BackgroundScheduler
 
 
 class QuartzUtil:
@@ -9,6 +13,7 @@ class QuartzUtil:
 
     def __init__(self, logger):
         self.logger = logger
+        self.task = None
         try:
             self.scheduler = BackgroundScheduler(timezone='Asia/Shanghai')
             self.scheduler.start()
@@ -136,8 +141,10 @@ class QuartzUtil:
             jobs = self.scheduler.get_jobs()
             if jobs and len(jobs) > 0:
                 self.scheduler.remove_all_jobs()
-            self.logger.info("全部调度任务已停止执行，日志处理程序将关闭！")
-            LoggerUtil.shutDown()
+                self.logger.info("全部调度任务已停止执行，日志处理程序将关闭！")
+                LoggerUtil.shutDown()
+            else:
+                self.logger.info("没有调度任务正在执行！")
 
 
 def getTaskCfg(nid):

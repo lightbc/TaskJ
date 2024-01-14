@@ -1,8 +1,13 @@
 import TaskJWin
 import Save
-from util import AppUtil, RandomUtil, TaskListUtil
-from entity.NewCreate import NewCreate
-from PyQt5 import QtWidgets, QtCore
+import util.AppUtil as AppUtil
+import util.RandomUtil as RandomUtil
+import util.TaskListUtil as TaskListUtil
+import entity.NewCreate as n
+import PyQt5.QtWidgets as QtWidgets
+import PyQt5.QtCore as QtCore
+
+NewCreate = n.NewCreate
 
 
 class NewCreateDialog(QtWidgets.QDialog, Save.Ui_Form, TaskJWin.Ui_MainWindow):

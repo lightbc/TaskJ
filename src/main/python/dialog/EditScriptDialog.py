@@ -1,8 +1,11 @@
 import os
 import Script
 import TaskJWin
-from util import FileUtil, RandomUtil, OSUtil
-from PyQt5 import QtWidgets, QtGui
+import util.FileUtil as FileUtil
+import util.RandomUtil as RandomUtil
+import util.OSUtil as OSUtil
+import PyQt5.QtWidgets as QtWidgets
+import PyQt5.QtGui as QtGui
 
 
 class EditScriptDialog(QtWidgets.QDialog, Script.Ui_Form, TaskJWin.Ui_MainWindow):

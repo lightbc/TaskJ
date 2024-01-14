@@ -1,8 +1,8 @@
 import logging
 import os
-
-from util import OSUtil, FileUtil
-from handler import AppShowLogHandler
+import util.OSUtil as OSUtil
+import util.FileUtil as FileUtil
+import handler.AppShowLogHandler as AppShowLogHandler
 
 # 日志保存目录名称
 logDir = "log"

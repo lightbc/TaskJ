@@ -1,9 +1,14 @@
 import time
 import TaskJWin
 import ClearLog
-from enums.TimeRangeEnum import TimeRangEnum
-from util import LoggerUtil, FileUtil
-from PyQt5.QtWidgets import QDialog, QMessageBox
+import util.LoggerUtil as LoggerUtil
+import util.FileUtil as FileUtil
+import PyQt5.QtWidgets as QtWidgets
+import enums.TimeRangeEnum as t
+
+QDialog = QtWidgets.QDialog
+QMessageBox = QtWidgets.QMessageBox
+TimeRangEnum = t.TimeRangEnum
 
 # 日志保存路径
 log_dir = LoggerUtil.savePath

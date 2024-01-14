@@ -1,6 +1,9 @@
 import json
-from util import FileUtil
-from PyQt5.QtWidgets import QTableWidget, QTableWidgetItem
+import util.FileUtil as FileUtil
+import PyQt5.QtWidgets as QtWidgets
+
+QTableWidget = QtWidgets.QTableWidget
+QTableWidgetItem = QtWidgets.QTableWidgetItem
 
 
 def delete(nid):

@@ -1,8 +1,15 @@
 import json
-from PyQt5.QtWidgets import QMessageBox, QDialog
-from util import FileUtil, SaveValidUtil, TaskListUtil
-from entity.NewCreate import NewCreate
-from enums.StatusCodeEnum import StatusCodeEnum
+import PyQt5.QtWidgets as QtWidgets
+import util.FileUtil as FileUtil
+import util.SaveValidUtil as SaveValidUtil
+import util.TaskListUtil as TaskListUtil
+import entity.NewCreate as n
+import enums.StatusCodeEnum as s
+
+QMessageBox = QtWidgets.QMessageBox
+QDialog = QtWidgets.QDialog
+NewCreate = n.NewCreate
+StatusCodeEnum = s.StatusCodeEnum
 
 
 def save(params: NewCreate, parent: QDialog):

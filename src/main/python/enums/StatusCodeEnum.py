@@ -1,4 +1,6 @@
-from enum import Enum
+import enum
+
+Enum = enum.Enum
 
 
 class StatusCodeEnum(Enum):

@@ -1,6 +1,7 @@
 import os
 import json
-from util import OSUtil, FormatCheckUtil
+import util.OSUtil as OSUtil
+import util.FormatCheckUtil as FormatCheckUtil
 
 
 def createFileDirs(path):

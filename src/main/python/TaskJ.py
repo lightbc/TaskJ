@@ -1,9 +1,14 @@
 import sys
 import About
 import TaskJWin
-from dialog import NewCreateDialog, ClearLogDialog, EditScriptDialog
-from util import TaskListUtil, QuartzUtil, LoggerUtil
-from PyQt5 import QtWidgets, QtGui
+import dialog.NewCreateDialog as NewCreateDialog
+import dialog.ClearLogDialog as ClearLogDialog
+import dialog.EditScriptDialog as EditScriptDialog
+import util.TaskListUtil as TaskListUtil
+import util.QuartzUtil as QuartzUtil
+import util.LoggerUtil as LoggerUtil
+import PyQt5.QtWidgets as QtWidgets
+import PyQt5.QtGui as QtGui
 
 # 唯一日志记录对象，避免消息重复输出
 logger = LoggerUtil.getLogger()
