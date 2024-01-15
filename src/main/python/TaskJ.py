@@ -10,6 +10,7 @@ import util.LoggerUtil as LoggerUtil
 import PyQt5.QtWidgets as QtWidgets
 import PyQt5.QtGui as QtGui
 
+version = "v1.1.0"
 # 唯一日志记录对象，避免消息重复输出
 logger = LoggerUtil.getLogger()
 
@@ -184,6 +185,7 @@ class AboutDialog(QtWidgets.QDialog, About.Ui_widget):
     def __init__(self, parent=None):
         super(AboutDialog, self).__init__(parent)
         self.setupUi(self)
+        self.version.setText(version)
 
 
 if __name__ == '__main__':
