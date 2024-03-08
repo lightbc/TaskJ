@@ -10,7 +10,7 @@ import util.LoggerUtil as LoggerUtil
 import PyQt5.QtWidgets as QtWidgets
 import PyQt5.QtGui as QtGui
 
-version = "v1.1.1"
+version = "v1.1.2"
 # 唯一日志记录对象，避免消息重复输出
 logger = LoggerUtil.getLogger()
 
