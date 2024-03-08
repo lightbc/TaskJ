@@ -26,7 +26,7 @@
             <string/>
            </property>
            <property name="pixmap">
-            <pixmap>../resources/images/logo_max.svg</pixmap>
+            <pixmap resource="images.qrc">:/images/resources/images/logo_max.svg</pixmap>
            </property>
            <property name="alignment">
             <set>Qt::AlignCenter</set>
@@ -172,6 +172,8 @@
    </item>
   </layout>
  </widget>
- <resources/>
+ <resources>
+  <include location="images.qrc"/>
+ </resources>
  <connections/>
 </ui>

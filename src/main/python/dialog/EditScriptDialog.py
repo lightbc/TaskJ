@@ -1,11 +1,9 @@
 import os
 import Script
 import TaskJWin
-import util.FileUtil as FileUtil
-import util.RandomUtil as RandomUtil
-import util.OSUtil as OSUtil
 import PyQt5.QtWidgets as QtWidgets
 import PyQt5.QtGui as QtGui
+from util import FileUtil, OSUtil, RandomUtil, AppUtil
 
 
 class EditScriptDialog(QtWidgets.QDialog, Script.Ui_Form, TaskJWin.Ui_MainWindow):
@@ -84,14 +82,13 @@ class EditScriptDialog(QtWidgets.QDialog, Script.Ui_Form, TaskJWin.Ui_MainWindow
 
     def getSaveIcon(self):
         """获取保存菜单显示图标"""
-        res_path = "../resources/images/"
         icon = QtGui.QIcon()
         if self.isUnSaveIcon:
             # 显示未保存图标
-            icon.addPixmap(QtGui.QPixmap(res_path + "unsave.svg"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+            icon.addPixmap(QtGui.QPixmap(AppUtil.resource_path + "unsave.svg"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         else:
             # 显示已保存图标
-            icon.addPixmap(QtGui.QPixmap(res_path + "save.svg"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+            icon.addPixmap(QtGui.QPixmap(AppUtil.resource_path + "save.svg"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         return icon
 
     def closeEvent(self, a0: QtGui.QCloseEvent) -> None:

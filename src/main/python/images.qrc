@@ -1,0 +1,14 @@
+<RCC>
+  <qresource prefix="images">
+    <file>resources/images/error.svg</file>
+    <file>resources/images/info.svg</file>
+    <file>resources/images/logo.ico</file>
+    <file>resources/images/logo.svg</file>
+    <file>resources/images/logo_max.svg</file>
+    <file>resources/images/run_script.svg</file>
+    <file>resources/images/save.svg</file>
+    <file>resources/images/stop.svg</file>
+    <file>resources/images/unsave.svg</file>
+    <file>resources/images/warn.svg</file>
+  </qresource>
+</RCC>

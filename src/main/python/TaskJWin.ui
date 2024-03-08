@@ -17,8 +17,8 @@
    <string>TaskJ</string>
   </property>
   <property name="windowIcon">
-   <iconset>
-    <normaloff>../resources/images/logo.svg</normaloff>../resources/images/logo.svg</iconset>
+   <iconset resource="images.qrc">
+    <normaloff>:/images/resources/images/logo.svg</normaloff>:/images/resources/images/logo.svg</iconset>
   </property>
   <widget class="QWidget" name="centralwidget">
    <layout class="QHBoxLayout" name="horizontalLayout_2">
@@ -295,8 +295,8 @@
   </action>
   <action name="all_stop_action">
    <property name="icon">
-    <iconset>
-     <normaloff>../resources/images/stop.svg</normaloff>../resources/images/stop.svg</iconset>
+    <iconset resource="images.qrc">
+     <normaloff>:/images/resources/images/stop.svg</normaloff>:/images/resources/images/stop.svg</iconset>
    </property>
    <property name="text">
     <string>全部停止</string>
@@ -332,6 +332,8 @@
    </property>
   </action>
  </widget>
- <resources/>
+ <resources>
+  <include location="images.qrc"/>
+ </resources>
  <connections/>
 </ui>

@@ -10,6 +10,7 @@ QMessageBox = QtWidgets.QMessageBox
 QDialog = QtWidgets.QDialog
 NewCreate = n.NewCreate
 StatusCodeEnum = s.StatusCodeEnum
+resource_path = ":/images/resources/images/"
 
 
 def save(params: NewCreate, parent: QDialog):
